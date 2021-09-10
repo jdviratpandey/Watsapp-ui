@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'PT Serif', serif;
+        font-weight: 300;
+        
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .sectionbn {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .nav1 {
+        width: 100%;
+        height: 4rem;
+        background-color: rgb(18, 122, 18);
+        display: flex;
+        text-align: center;
+
+    }
+
+    .nav1 i {
+        width: 100%;
+        display: grid;
+        justify-content: end;
+        color: rgb(219, 213, 213);
+        margin-top: 1rem;
+        margin-right: 3px;
+    }
+
+    h2 {
+        color: white;
+    }
+
+    .links {
+        margin: 0;
+        display: flex;
+        width: auto;
+        background-color: rgb(18, 122, 18);
+        justify-content: space-between;
+
+    }
+
+    .links h1,
+    i {
+        margin-left: 2px;
+        margin-right: 2PX;
+        color: rgb(167, 164, 164);
+        padding-left: 2px;
+        padding-right: 2px;
+        cursor: pointer;
+    }
+
+    .links i {
+        margin-top: 4px;
+    }
+
+    .links h1.active {
+        color: white;
+        text-decoration: underline;
+    }
+
+    .links h1:hover {
+        cursor: pointer;
+        background-color: black;
+        opacity: 30%;
+    }
+
+    .links i.active {
+        color: white;
+        text-decoration: underline;
+    }
+
+    .links i:hover {
+        cursor: pointer;
+        background-color: black;
+        opacity: 30%;
+    }
+
+    .tabcontent {
+        display: none;
+    }
+    .navlinks{
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        height: 14rem;
+        width: 10rem;
+        justify-content: end;
+        z-index: 2;
+        margin-left: 5rem;
+    }
+    .navlinks a{
+        margin-top: 1rem;
+        width: 100%;
+        color: black;
+        text-decoration: none;
+    }
+    #ham1{
+        display: none;
+        z-index: 3;
+        width: 100vw;
+        height: auto;
+    }
+    .trp1{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+    }
+  #videoElement{
+    border: 2px solid black;
+height: 86vh;
+  }
+  a i{
+      position: absolute;
+      top: 36rem;
+      left: 19rem;
+      font-size: 43px;
+      color: rgb(18, 122, 18);
+      border-radius: 50%;
+      z-index: 999;
+      box-shadow: 2px black;
+  }
+</style>
+
+<body>
+    <section class="sectionbn">
+        <header>
+            <div class="nav1">
+                <h2>Watsapp</h2>
+                <div id="ham1">
+
+                    <div class="navlinks">
+    
+                        <a href="#">New Group</a>
+                        <a href="#">New broadcast</a>
+                        <a href="#">WatsaApp Web</a>
+                        <a href="#">Starred messsages</a>
+                        <a href="#">Payments</a>
+                        <a href="#">Settings</a>
+                    </div>
+                </div>
+                <i onclick="hambar()" class="fas fa-bars"></i>
+            </div>
+            <div class="links">
+                <i  onclick="openSection(event,'vid1')" class="fas fa-camera linktab"></i>
+                <h1 class="linktab" onclick="openSection(event,'chat')" id="default_open">Chat</h1>
+                <h1 class="linktab" onclick="openSection(event,'status')">Status</h1>
+                <h1 class="linktab" onclick="openSection(event,'calls')">Calls</h1>
+            </div>
+        </header>
+        <section class="trp1">
+
+            <div id="vid1" class="tabcontent">
+                <video autoplay="true" id="videoElement"></video>
+            </div>
+            <div id="chat" class="tabcontent">
+                <h3>Chat</h3>
+                <p>Chat is the capital of Japan.</p>
+            </div>
+            <div id="status" class="tabcontent">
+                <h3>Status</h3>
+                <p>Chat is the capital of Japan.</p>
+            </div>
+            <div id="calls" class="tabcontent">
+                <h3>Calls</h3>
+                <p>Chat is the capital of Japan.</p>
+            </div>
+        </section>
+        <section>
+            <a href="#"><i class="fas fa-user-circle"></i></a>
+        </section>
+
+    </section>
+
+    <script>
+        function openSection(evt, secname) {
+            var i, tabcontent, linktab;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            linktab = document.getElementsByClassName("linktab");
+            for (i = 0; i < linktab.length; i++) {
+                linktab[i].className = linktab[i].className.replace(" active", "");
+            }
+            document.getElementById(secname).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("default_open").click();
+        function hambar(){
+            const x =document.getElementById('ham1');
+            if(x.style.display==="none"){
+x.style.display="block";
+            }
+            else{
+                x.style.display="none"
+            }
+        }
+
+    </script>
+    <script>
+        const constraints = {
+          video: true,
+        };
+        
+        const video = document.querySelector("video");
+        
+        navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+          video.srcObject = stream;
+        });
+        </script>
+</body>
+
+</html>
